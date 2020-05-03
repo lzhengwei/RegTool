@@ -1,0 +1,10 @@
+C:\Users\zhengwei\source\repos\RegTool_forms\RegTool_forms\bin\Debug\RegTool_forms.exe.config
+C:\Users\zhengwei\source\repos\RegTool_forms\RegTool_forms\bin\Debug\RegTool_forms.exe
+C:\Users\zhengwei\source\repos\RegTool_forms\RegTool_forms\bin\Debug\RegTool_forms.pdb
+C:\Users\zhengwei\source\repos\RegTool_forms\RegTool_forms\obj\Debug\RegTool_forms.csprojAssemblyReference.cache
+C:\Users\zhengwei\source\repos\RegTool_forms\RegTool_forms\obj\Debug\RegTool_forms.Form1.resources
+C:\Users\zhengwei\source\repos\RegTool_forms\RegTool_forms\obj\Debug\RegTool_forms.Properties.Resources.resources
+C:\Users\zhengwei\source\repos\RegTool_forms\RegTool_forms\obj\Debug\RegTool_forms.csproj.GenerateResource.cache
+C:\Users\zhengwei\source\repos\RegTool_forms\RegTool_forms\obj\Debug\RegTool_forms.csproj.CoreCompileInputs.cache
+C:\Users\zhengwei\source\repos\RegTool_forms\RegTool_forms\obj\Debug\RegTool_forms.exe
+C:\Users\zhengwei\source\repos\RegTool_forms\RegTool_forms\obj\Debug\RegTool_forms.pdb
