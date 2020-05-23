@@ -27,6 +27,7 @@ namespace RegTool_forms
             {
                 ComputeReg test = new ComputeReg(textBox_input.Text);
                 label1.Text = "hex : " + test.getHex().ToString() + "\n\n" + test.getBinary();
+                generateGriditem(2, test.getBinary());
             }
 
         }
@@ -50,25 +51,27 @@ namespace RegTool_forms
             ouputBinary = AddzeroLeft(ouputBinary);
 
             int numofshowrow = numofShowvalue / row, numofshowcol = numofShowvalue / numofshowrow;
-
+            panel_main.BackgroundImage = null;
             panel_main.Controls.Clear();
             int strcount = 0;
             for (int c = 0; c < numofshowcol; c++)
             {
                 for (int i = 0; i < numofshowrow; i++)
                 {
-                    Label testlabel = new Label();
-                    testlabel.Name = "Label" + i.ToString();
-                    testlabel.Location = new Point(30 + i * 24, 40+c*50);
-                    testlabel.Text = ouputBinary[strcount].ToString();
-                    testlabel.Width = 7;
-                    testlabel.Height = 10;
-                    panel_main.Controls.Add(testlabel);
+                    TextBox textbox = new TextBox();
+                    textbox.Name = "Label" + i.ToString();
+                    textbox.Location = new Point(30 + i * 25, 40+c*80);
+                    textbox.Text = ouputBinary[strcount].ToString();
+                    textbox.Width = 15;
+                    textbox.Height = 10;
+                    panel_main.Controls.Add(textbox);
                     strcount++;
                 }
             }
+           
+            panel_main.BackgroundImage = Image.FromFile(@"C:\Users\zhengwei\Pictures\test.png");
+            panel_main.BackgroundImageLayout = ImageLayout.Stretch;
             panel_main.Show();
-
         }
 
         private string AddzeroLeft(string ouputBinary)

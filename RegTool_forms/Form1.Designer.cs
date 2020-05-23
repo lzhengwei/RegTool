@@ -34,7 +34,6 @@
             this.layer1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox_input = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button_test = new System.Windows.Forms.Button();
             this.panel_main = new System.Windows.Forms.Panel();
             this.menuStrip_main.SuspendLayout();
             this.SuspendLayout();
@@ -55,7 +54,7 @@
             this.testToolStripMenuItem});
             this.menuStrip_main.Location = new System.Drawing.Point(0, 0);
             this.menuStrip_main.Name = "menuStrip_main";
-            this.menuStrip_main.Size = new System.Drawing.Size(799, 24);
+            this.menuStrip_main.Size = new System.Drawing.Size(841, 24);
             this.menuStrip_main.TabIndex = 1;
             this.menuStrip_main.Text = "menuStrip1";
             // 
@@ -90,30 +89,20 @@
             this.label1.Size = new System.Drawing.Size(322, 117);
             this.label1.TabIndex = 3;
             // 
-            // button_test
-            // 
-            this.button_test.Location = new System.Drawing.Point(135, 364);
-            this.button_test.Name = "button_test";
-            this.button_test.Size = new System.Drawing.Size(75, 23);
-            this.button_test.TabIndex = 4;
-            this.button_test.Text = "button1";
-            this.button_test.UseVisualStyleBackColor = true;
-            this.button_test.Click += new System.EventHandler(this.button_test_Click);
-            // 
             // panel_main
             // 
             this.panel_main.Location = new System.Drawing.Point(0, 27);
             this.panel_main.Name = "panel_main";
-            this.panel_main.Size = new System.Drawing.Size(799, 314);
+            this.panel_main.Size = new System.Drawing.Size(841, 314);
             this.panel_main.TabIndex = 5;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 444);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(841, 444);
             this.Controls.Add(this.panel_main);
-            this.Controls.Add(this.button_test);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox_input);
             this.Controls.Add(this.button_translate);
@@ -136,7 +125,6 @@
         private System.Windows.Forms.ToolStripMenuItem layer1ToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox_input;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button_test;
         private System.Windows.Forms.Panel panel_main;
     }
 }

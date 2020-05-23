@@ -10,11 +10,10 @@ namespace RegTool_forms
         string binary_str;
         public ComputeReg(string inputstr)
         {
-            inputstr=inputstr.PadLeft(4, '0');
+            inputstr = inputstrprocess(inputstr);
             value_dec = Convert.ToInt32(inputstr, 16);
-            if (inputstr[0] == '0' && (inputstr[1] == 'x' || inputstr[1] == 'X'))
-                inputstr = inputstr.Substring(2, inputstr.Length - 2);
-            try {
+            try
+            {
                 binary_str = String.Join(String.Empty,
                 inputstr.Select(
                 c => Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0')
@@ -25,7 +24,13 @@ namespace RegTool_forms
                 MessageBox.Show("Input invalid");
             }
 
-
+            string inputstrprocess(string str)
+            {
+                if (str[0] == '0' && (str[1] == 'x' || str[1] == 'X'))
+                    str = str.Substring(2);
+                str = str.PadLeft(4, '0');
+                return str;
+            }
         }
         public int getDec()
         {
