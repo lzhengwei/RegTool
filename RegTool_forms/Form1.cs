@@ -1,8 +1,10 @@
-﻿using System;
+﻿using RegTool_forms.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,22 +15,46 @@ namespace RegTool_forms
     public partial class Form1 : Form
     {
         int numofShowvalue = 64;
+        TextBox[] textbox_panel;
+        ComputeReg main_computeReg = new ComputeReg();
         public Form1()
         {
             InitializeComponent();
+            panel_main.Paint += new PaintEventHandler(panel1_Paint);
+            textbox_panel = new TextBox[numofShowvalue];
+            Init_textbox_panel();
         }
 
+        private void Init_textbox_panel()
+        {
+            for (int idx = 0; idx < textbox_panel.Length; idx++)
+            {
+                textbox_panel[idx] = new TextBox();
+            }
+        }
 
         private void button_translate_Click(object sender, EventArgs e)
         {
+            //panel_main.creategraphics();
             
-
-            if(textBox_input.TextLength> 0)
+            //panel_main.Refresh();
+            bool rv = false;
+            if(textBox_dec.TextLength>0)
             {
-                ComputeReg test = new ComputeReg(textBox_input.Text);
-                label1.Text = "hex : " + test.getHex().ToString() + "\n\n" + test.getBinary();
-                generateGriditem(2, test.getBinary());
+                rv = main_computeReg.set_new_inputstr(textBox_dec.Text, 1);                
             }
+                
+            else if (textBox_hex.TextLength> 0)
+            {
+                rv = main_computeReg.set_new_inputstr(textBox_hex.Text,0);               
+            }      
+            if(rv)
+            {
+                textBox_hex.Text = "0x" + main_computeReg.getHex();
+                textBox_dec.Text = main_computeReg.getDec().ToString();
+                generateGriditem(2, main_computeReg.getBinary());
+            }
+            GC.Collect();
 
         }
 
@@ -42,10 +68,6 @@ namespace RegTool_forms
 
         }
 
-        private void button_test_Click(object sender, EventArgs e)
-        {
-            generateGriditem(2,"00100");
-        }
         private void generateGriditem(int row,string ouputBinary)
         {
             ouputBinary = AddzeroLeft(ouputBinary);
@@ -58,20 +80,32 @@ namespace RegTool_forms
             {
                 for (int i = 0; i < numofshowrow; i++)
                 {
-                    TextBox textbox = new TextBox();
-                    textbox.Name = "Label" + i.ToString();
-                    textbox.Location = new Point(30 + i * 25, 40+c*80);
-                    textbox.Text = ouputBinary[strcount].ToString();
-                    textbox.Width = 15;
-                    textbox.Height = 10;
-                    panel_main.Controls.Add(textbox);
+                    Textbox_gen(ouputBinary, strcount, c, i);
                     strcount++;
                 }
             }
-           
-            panel_main.BackgroundImage = Image.FromFile(@"C:\Users\zhengwei\Pictures\test.png");
-            panel_main.BackgroundImageLayout = ImageLayout.Stretch;
-            panel_main.Show();
+            
+            //panel_main.BackgroundImage = Resources.regtool_background;
+            //panel_main.BackgroundImageLayout = ImageLayout.Stretch;
+            //panel_main.Show();
+        }
+
+        private void Textbox_gen(string ouputBinary, int strcount, int c, int i)
+        {
+            TextBox textbox = new TextBox();
+            textbox.Name = "Label" + i.ToString();
+            textbox.Location = new Point(30 + i * 25, 40 + c * 80);
+            textbox.Text = ouputBinary[strcount].ToString();
+            textbox.Width = 15;
+            textbox.Height = 10;
+            if (Int32.Parse(ouputBinary[strcount].ToString()) > 0)
+            {
+                textbox.Font = new Font(textbox.Font, FontStyle.Bold);
+                textbox.BackColor = Color.FromArgb(255, 209, 207, 205);
+            }
+                
+            panel_main.Controls.Add(textbox);
+            
         }
 
         private string AddzeroLeft(string ouputBinary)
@@ -83,6 +117,65 @@ namespace RegTool_forms
             }
 
             return ouputBinary;
+        }
+
+        private void button_shift_left_Click(object sender, EventArgs e)
+        {          
+            int binary_shift_left = main_computeReg.getDec();
+            if (binary_shift_left!= null)
+            {
+                binary_shift_left *= 2;
+                main_computeReg.set_new_inputstr(Convert.ToString(binary_shift_left, 16),0);
+                generateGriditem(2, main_computeReg.getBinary());
+                textBox_hex.Text = "0x" + main_computeReg.getHex();
+                textBox_dec.Text = main_computeReg.getDec().ToString();
+            }
+        }
+
+        private void button_shift_right_Click(object sender, EventArgs e)
+        {
+            int binary_shift_right = main_computeReg.getDec();
+            if (binary_shift_right != null)
+            {
+                binary_shift_right /= 2;
+                main_computeReg.set_new_inputstr(Convert.ToString(binary_shift_right, 16),0);
+                generateGriditem(2, main_computeReg.getBinary());
+                textBox_hex.Text = "0x" + main_computeReg.getHex();
+                textBox_dec.Text = main_computeReg.getDec().ToString();
+
+            }
+        }
+
+        private void textBox_hex_MouseClick(object sender, MouseEventArgs e)
+        {
+            textBox_dec.Text = "";
+        }
+
+        private void textBox_dec_MouseClick(object sender, MouseEventArgs e)
+        {
+            textBox_hex.Text = "";
+        }
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {           
+            var p = sender as Panel;
+            var g = e.Graphics;
+            FontFamily fam = new FontFamily("Calibri");
+            var sbr = new SolidBrush(Color.Blue);
+            Font font = new System.Drawing.Font(fam, 12, FontStyle.Bold);
+            int loc_x=0, loc_y = 0;
+            for(int py=0;py<2;py++)
+            {
+                for (int px = 0; px < 8; px++)
+                {
+                    loc_x = px * 100;
+                    loc_y = py * 80;
+                    g.DrawRectangle(new Pen(Color.FromArgb(255, Color.Black), 1), 28 + loc_x, 30 + loc_y, 94, 45);
+                    g.DrawString((63 - (4 * px)- (32*py)).ToString(), font, sbr, 28 + loc_x, 80 + loc_y);
+                    g.DrawString((63 - (4 * px) - 3 - (32 * py)).ToString(), font, sbr, 100 + loc_x, 80 + loc_y);
+                }
+            }
+            g.Dispose();
+            GC.Collect();
         }
     }
 

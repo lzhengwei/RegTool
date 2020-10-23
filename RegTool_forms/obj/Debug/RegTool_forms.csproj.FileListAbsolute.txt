@@ -8,3 +8,18 @@ C:\Users\zhengwei\source\repos\RegTool_forms\RegTool_forms\obj\Debug\RegTool_for
 C:\Users\zhengwei\source\repos\RegTool_forms\RegTool_forms\obj\Debug\RegTool_forms.csproj.CoreCompileInputs.cache
 C:\Users\zhengwei\source\repos\RegTool_forms\RegTool_forms\obj\Debug\RegTool_forms.exe
 C:\Users\zhengwei\source\repos\RegTool_forms\RegTool_forms\obj\Debug\RegTool_forms.pdb
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\bin\Debug\RegTool_forms.exe.config
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\bin\Debug\RegTool_forms.exe
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\bin\Debug\RegTool_forms.pdb
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\obj\Debug\RegTool_forms.Form1.resources
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\obj\Debug\RegTool_forms.Properties.Resources.resources
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\obj\Debug\RegTool_forms.csproj.GenerateResource.cache
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\obj\Debug\RegTool_forms.csproj.CoreCompileInputs.cache
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\obj\Debug\RegTool_forms.exe
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\obj\Debug\RegTool_forms.pdb
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\bin\Debug\RegTool_forms.exe.manifest
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\bin\Debug\RegTool_forms.application
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\obj\Debug\RegTool_forms.exe.manifest
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\obj\Debug\RegTool_forms.application
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\obj\Debug\RegTool_forms.csprojAssemblyReference.cache
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\bin\Debug\Resources\regtool_background.png
