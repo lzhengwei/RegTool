@@ -22,15 +22,30 @@ namespace RegTool_forms
             InitializeComponent();
             panel_main.Paint += new PaintEventHandler(panel1_Paint);
             textbox_panel = new TextBox[numofShowvalue];
-            Init_textbox_panel();
+            Init_textbox_panel(2);
         }
 
-        private void Init_textbox_panel()
+        private void Init_textbox_panel(int row)
         {
-            for (int idx = 0; idx < textbox_panel.Length; idx++)
+
+            int numofshowrow = numofShowvalue / row, numofshowcol = numofShowvalue / numofshowrow;
+            panel_main.BackgroundImage = null;
+            panel_main.Controls.Clear();
+            int textbox_count = 0;
+            for (int c = 0; c < numofshowcol; c++)
             {
-                textbox_panel[idx] = new TextBox();
+                for (int i = 0; i < numofshowrow; i++)
+                {
+                    textbox_panel[textbox_count] = new TextBox();
+                    textbox_panel[textbox_count].Name = "Label" + i.ToString();
+                    textbox_panel[textbox_count].Location = new Point(30 + i * 25, 40 + c * 80);
+                    textbox_panel[textbox_count].Width = 15;
+                    textbox_panel[textbox_count].Height = 10;
+                    textbox_count++;
+                }
             }
+            panel_main.Controls.AddRange(textbox_panel);
+            
         }
 
         private void button_translate_Click(object sender, EventArgs e)
@@ -73,38 +88,37 @@ namespace RegTool_forms
             ouputBinary = AddzeroLeft(ouputBinary);
 
             int numofshowrow = numofShowvalue / row, numofshowcol = numofShowvalue / numofshowrow;
-            panel_main.BackgroundImage = null;
-            panel_main.Controls.Clear();
+            //panel_main.BackgroundImage = null;
+            //panel_main.Controls.Clear();
             int strcount = 0;
             for (int c = 0; c < numofshowcol; c++)
             {
                 for (int i = 0; i < numofshowrow; i++)
                 {
-                    Textbox_gen(ouputBinary, strcount, c, i);
+                    Textbox_fill_num(ouputBinary, strcount);
                     strcount++;
                 }
             }
-            
+
             //panel_main.BackgroundImage = Resources.regtool_background;
             //panel_main.BackgroundImageLayout = ImageLayout.Stretch;
             //panel_main.Show();
+            panel_main.Refresh();
         }
 
-        private void Textbox_gen(string ouputBinary, int strcount, int c, int i)
+        private void Textbox_fill_num(string ouputBinary, int strcount)
         {
-            TextBox textbox = new TextBox();
-            textbox.Name = "Label" + i.ToString();
-            textbox.Location = new Point(30 + i * 25, 40 + c * 80);
-            textbox.Text = ouputBinary[strcount].ToString();
-            textbox.Width = 15;
-            textbox.Height = 10;
+            textbox_panel[strcount].Text = ouputBinary[strcount].ToString();
             if (Int32.Parse(ouputBinary[strcount].ToString()) > 0)
             {
-                textbox.Font = new Font(textbox.Font, FontStyle.Bold);
-                textbox.BackColor = Color.FromArgb(255, 209, 207, 205);
+                textbox_panel[strcount].Font = new Font(textbox_panel[strcount].Font, FontStyle.Bold);
+                textbox_panel[strcount].BackColor = Color.FromArgb(255, 209, 207, 205);
             }
-                
-            panel_main.Controls.Add(textbox);
+            else
+            {
+                textbox_panel[strcount].Font = new Font(textbox_panel[strcount].Font, FontStyle.Regular);
+                textbox_panel[strcount].BackColor = Color.FromArgb(255, 255, 255, 255);
+            }
             
         }
 

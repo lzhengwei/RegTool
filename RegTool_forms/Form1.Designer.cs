@@ -55,7 +55,7 @@
             this.button_translate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_translate.Location = new System.Drawing.Point(395, 276);
             this.button_translate.Name = "button_translate";
-            this.button_translate.Size = new System.Drawing.Size(114, 74);
+            this.button_translate.Size = new System.Drawing.Size(184, 74);
             this.button_translate.TabIndex = 0;
             this.button_translate.Text = "Translate";
             this.button_translate.UseVisualStyleBackColor = false;
@@ -82,19 +82,19 @@
             // layer1ToolStripMenuItem
             // 
             this.layer1ToolStripMenuItem.Name = "layer1ToolStripMenuItem";
-            this.layer1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.layer1ToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.layer1ToolStripMenuItem.Text = "layer1";
             this.layer1ToolStripMenuItem.Click += new System.EventHandler(this.layer1ToolStripMenuItem_Click);
             // 
             // button_shift_left
             // 
             this.button_shift_left.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button_shift_left.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button_shift_left.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.button_shift_left.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
             this.button_shift_left.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.button_shift_left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_shift_left.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_shift_left.Location = new System.Drawing.Point(544, 277);
+            this.button_shift_left.Location = new System.Drawing.Point(613, 272);
             this.button_shift_left.Name = "button_shift_left";
             this.button_shift_left.Size = new System.Drawing.Size(71, 37);
             this.button_shift_left.TabIndex = 6;
@@ -105,12 +105,12 @@
             // button_shift_right
             // 
             this.button_shift_right.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button_shift_right.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button_shift_right.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.button_shift_right.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
             this.button_shift_right.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.button_shift_right.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_shift_right.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_shift_right.Location = new System.Drawing.Point(544, 320);
+            this.button_shift_right.Location = new System.Drawing.Point(613, 313);
             this.button_shift_right.Name = "button_shift_right";
             this.button_shift_right.Size = new System.Drawing.Size(71, 37);
             this.button_shift_right.TabIndex = 7;
