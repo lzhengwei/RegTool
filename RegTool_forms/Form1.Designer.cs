@@ -122,21 +122,21 @@
             // 
             this.textBox_dec.Font = new System.Drawing.Font("Liberation Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_dec.Location = new System.Drawing.Point(223, 304);
-            this.textBox_dec.Multiline = true;
             this.textBox_dec.Name = "textBox_dec";
-            this.textBox_dec.Size = new System.Drawing.Size(140, 35);
+            this.textBox_dec.Size = new System.Drawing.Size(140, 26);
             this.textBox_dec.TabIndex = 9;
             this.textBox_dec.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox_dec_MouseClick);
+            this.textBox_dec.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_dec_KeyDown);
             // 
             // textBox_hex
             // 
             this.textBox_hex.Font = new System.Drawing.Font("Liberation Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_hex.Location = new System.Drawing.Point(53, 304);
-            this.textBox_hex.Multiline = true;
             this.textBox_hex.Name = "textBox_hex";
-            this.textBox_hex.Size = new System.Drawing.Size(140, 35);
+            this.textBox_hex.Size = new System.Drawing.Size(140, 26);
             this.textBox_hex.TabIndex = 10;
             this.textBox_hex.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox_hex_MouseClick);
+            this.textBox_hex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_hex_KeyDown);
             // 
             // label1
             // 
@@ -194,6 +194,7 @@
             this.Controls.Add(this.menuStrip_main);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip_main;
             this.Name = "Form1";

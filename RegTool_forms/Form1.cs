@@ -27,7 +27,7 @@ namespace RegTool_forms
 
         private void Init_textbox_panel(int row)
         {
-
+            
             int numofshowrow = numofShowvalue / row, numofshowcol = numofShowvalue / numofshowrow;
             panel_main.BackgroundImage = null;
             panel_main.Controls.Clear();
@@ -41,6 +41,7 @@ namespace RegTool_forms
                     textbox_panel[textbox_count].Location = new Point(30 + i * 25, 40 + c * 80);
                     textbox_panel[textbox_count].Width = 15;
                     textbox_panel[textbox_count].Height = 10;
+                    textbox_panel[textbox_count].MouseClick += textbox_panel_MouseClick;
                     textbox_count++;
                 }
             }
@@ -48,29 +49,35 @@ namespace RegTool_forms
             
         }
 
+        private void textbox_panel_MouseClick(object sender, MouseEventArgs e)
+        {
+            textBox_dec.Text = ""; textBox_hex.Text = "";
+        }
+
         private void button_translate_Click(object sender, EventArgs e)
         {
-            //panel_main.creategraphics();
-            
-            //panel_main.Refresh();
+            translate_func();
+        }
+
+        private void translate_func()
+        {
             bool rv = false;
-            if(textBox_dec.TextLength>0)
+            if (textBox_dec.TextLength > 0)
             {
-                rv = main_computeReg.set_new_inputstr(textBox_dec.Text, 1);                
+                rv = main_computeReg.set_new_inputstr(textBox_dec.Text, 1);
             }
-                
-            else if (textBox_hex.TextLength> 0)
+
+            else if (textBox_hex.TextLength > 0)
             {
-                rv = main_computeReg.set_new_inputstr(textBox_hex.Text,0);               
-            }      
-            if(rv)
+                rv = main_computeReg.set_new_inputstr(textBox_hex.Text, 0);
+            }
+            if (rv)
             {
                 textBox_hex.Text = "0x" + main_computeReg.getHex();
                 textBox_dec.Text = main_computeReg.getDec().ToString();
                 generateGriditem(2, main_computeReg.getBinary());
             }
             GC.Collect();
-
         }
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
@@ -190,6 +197,22 @@ namespace RegTool_forms
             }
             g.Dispose();
             GC.Collect();
+        }
+
+        private void textBox_hex_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode.ToString().Equals("Return"))
+            {
+                translate_func();
+            }
+        }
+
+        private void textBox_dec_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString().Equals("Return"))
+            {
+                translate_func();
+            }
         }
     }
 
