@@ -48,7 +48,7 @@ namespace RegTool_forms
         {
             return binary_str;
         }
-        private string inputstrprocess(string str)
+        public string inputstrprocess(string str)
         {
             if (str[0] == '0' && (str[1] == 'x' || str[1] == 'X'))
                 str = str.Substring(2);

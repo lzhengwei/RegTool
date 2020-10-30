@@ -125,7 +125,6 @@
             this.textBox_dec.Name = "textBox_dec";
             this.textBox_dec.Size = new System.Drawing.Size(140, 26);
             this.textBox_dec.TabIndex = 9;
-            this.textBox_dec.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox_dec_MouseClick);
             this.textBox_dec.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_dec_KeyDown);
             // 
             // textBox_hex
@@ -135,7 +134,6 @@
             this.textBox_hex.Name = "textBox_hex";
             this.textBox_hex.Size = new System.Drawing.Size(140, 26);
             this.textBox_hex.TabIndex = 10;
-            this.textBox_hex.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox_hex_MouseClick);
             this.textBox_hex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_hex_KeyDown);
             // 
             // label1

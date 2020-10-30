@@ -17,17 +17,20 @@ namespace RegTool_forms
         int numofShowvalue = 64;
         TextBox[] textbox_panel;
         ComputeReg main_computeReg = new ComputeReg();
+        Textbox_panel main_textbox_Panel;
         public Form1()
         {
             InitializeComponent();
             panel_main.Paint += new PaintEventHandler(panel1_Paint);
-            textbox_panel = new TextBox[numofShowvalue];
-            Init_textbox_panel(2);
+            main_textbox_Panel = new Textbox_panel(numofShowvalue, 2);
+            //textbox_panel = new TextBox[numofShowvalue];
+            //Init_textbox_panel(2);
+            panel_main.Controls.AddRange(main_textbox_Panel.textbox_panel);
+
         }
 
         private void Init_textbox_panel(int row)
-        {
-            
+        {          
             int numofshowrow = numofShowvalue / row, numofshowcol = numofShowvalue / numofshowrow;
             panel_main.BackgroundImage = null;
             panel_main.Controls.Clear();
@@ -62,22 +65,43 @@ namespace RegTool_forms
         private void translate_func()
         {
             bool rv = false;
+            String inputstr;
             if (textBox_dec.TextLength > 0)
             {
-                rv = main_computeReg.set_new_inputstr(textBox_dec.Text, 1);
+                inputstr = main_computeReg.inputstrprocess(textBox_dec.Text);
+                if (main_computeReg.getDec() != Int32.Parse(inputstr))
+                    rv = main_computeReg.set_new_inputstr(textBox_dec.Text, 1);
             }
-
             else if (textBox_hex.TextLength > 0)
             {
-                rv = main_computeReg.set_new_inputstr(textBox_hex.Text, 0);
+                inputstr = main_computeReg.inputstrprocess(textBox_hex.Text);
+                if (main_computeReg.getDec() != Int32.Parse(inputstr))
+                    rv = main_computeReg.set_new_inputstr(textBox_hex.Text, 0);
             }
+
+            //if (flag == 0)
+            //    value_dec = Convert.ToInt32(inputstr, 16);
+            //else
+            //{
+            //    value_dec = Int32.Parse(inputstr);
+            //    inputstr = Convert.ToString(value_dec, 16);
+            //}
+            //bool rv = false;
+            //if (textBox_dec.TextLength > 0)
+            //{
+            //    rv = main_computeReg.set_new_inputstr(textBox_dec.Text, 1);
+            //}
+            //else if (textBox_hex.TextLength > 0)
+            //{
+            //    rv = main_computeReg.set_new_inputstr(textBox_hex.Text, 0);
+            //}
             if (rv)
             {
                 textBox_hex.Text = "0x" + main_computeReg.getHex();
                 textBox_dec.Text = main_computeReg.getDec().ToString();
                 generateGriditem(2, main_computeReg.getBinary());
             }
-            GC.Collect();
+            //GC.Collect();
         }
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,7 +126,7 @@ namespace RegTool_forms
             {
                 for (int i = 0; i < numofshowrow; i++)
                 {
-                    Textbox_fill_num(ouputBinary, strcount);
+                    main_textbox_Panel.set_textbox_text(strcount, ouputBinary[strcount].ToString());
                     strcount++;
                 }
             }
@@ -111,22 +135,6 @@ namespace RegTool_forms
             //panel_main.BackgroundImageLayout = ImageLayout.Stretch;
             //panel_main.Show();
             panel_main.Refresh();
-        }
-
-        private void Textbox_fill_num(string ouputBinary, int strcount)
-        {
-            textbox_panel[strcount].Text = ouputBinary[strcount].ToString();
-            if (Int32.Parse(ouputBinary[strcount].ToString()) > 0)
-            {
-                textbox_panel[strcount].Font = new Font(textbox_panel[strcount].Font, FontStyle.Bold);
-                textbox_panel[strcount].BackColor = Color.FromArgb(255, 209, 207, 205);
-            }
-            else
-            {
-                textbox_panel[strcount].Font = new Font(textbox_panel[strcount].Font, FontStyle.Regular);
-                textbox_panel[strcount].BackColor = Color.FromArgb(255, 255, 255, 255);
-            }
-            
         }
 
         private string AddzeroLeft(string ouputBinary)
@@ -165,16 +173,6 @@ namespace RegTool_forms
                 textBox_dec.Text = main_computeReg.getDec().ToString();
 
             }
-        }
-
-        private void textBox_hex_MouseClick(object sender, MouseEventArgs e)
-        {
-            textBox_dec.Text = "";
-        }
-
-        private void textBox_dec_MouseClick(object sender, MouseEventArgs e)
-        {
-            textBox_hex.Text = "";
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {           
