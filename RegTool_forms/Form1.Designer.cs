@@ -41,8 +41,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_main = new System.Windows.Forms.Panel();
+            this.button_clear = new System.Windows.Forms.Button();
             this.menuStrip_main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel_main.SuspendLayout();
             this.SuspendLayout();
             // 
             // button_translate
@@ -171,10 +173,27 @@
             // 
             this.panel_main.BackColor = System.Drawing.Color.White;
             this.panel_main.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel_main.Controls.Add(this.button_clear);
             this.panel_main.Location = new System.Drawing.Point(10, 27);
             this.panel_main.Name = "panel_main";
             this.panel_main.Size = new System.Drawing.Size(841, 226);
             this.panel_main.TabIndex = 5;
+            // 
+            // button_clear
+            // 
+            this.button_clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.button_clear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.button_clear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.button_clear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightCoral;
+            this.button_clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_clear.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_clear.Location = new System.Drawing.Point(760, 182);
+            this.button_clear.Name = "button_clear";
+            this.button_clear.Size = new System.Drawing.Size(71, 37);
+            this.button_clear.TabIndex = 14;
+            this.button_clear.Text = "Clear";
+            this.button_clear.UseVisualStyleBackColor = false;
+            this.button_clear.Click += new System.EventHandler(this.button_clear_Click);
             // 
             // Form1
             // 
@@ -200,6 +219,7 @@
             this.menuStrip_main.ResumeLayout(false);
             this.menuStrip_main.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel_main.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,6 +239,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel_main;
+        private System.Windows.Forms.Button button_clear;
     }
 }
 

@@ -7,25 +7,20 @@ namespace RegTool_forms
     public class ComputeReg
     {
         int value_dec, value_hex;
-        string binary_str;
+        string binary_str,hex_str;
         
-        public bool set_new_inputstr(string inputstr,int flag)
+        public bool set_new_inputstr(int inputdec)
         {
             //flag - 0 : hex mode
             //flag - 1 : dec mode
             try
             {
-                inputstr = inputstrprocess(inputstr);
-                if (flag == 0)
-                    value_dec = Convert.ToInt32(inputstr, 16);
-                else
-                {
-                    value_dec = Int32.Parse(inputstr);
-                    inputstr = Convert.ToString(value_dec, 16);
-                }
-                    
+                value_dec = inputdec;
+                hex_str = Convert.ToString(value_dec, 16);
+
+
                 binary_str = String.Join(String.Empty,
-                inputstr.Select(
+                hex_str.Select(
                 c => Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0')
                 ));
             }

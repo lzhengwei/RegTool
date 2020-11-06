@@ -64,44 +64,60 @@ namespace RegTool_forms
 
         private void translate_func()
         {
-            bool rv = false;
-            String inputstr;
-            if (textBox_dec.TextLength > 0)
-            {
-                inputstr = main_computeReg.inputstrprocess(textBox_dec.Text);
-                if (main_computeReg.getDec() != Int32.Parse(inputstr))
-                    rv = main_computeReg.set_new_inputstr(textBox_dec.Text, 1);
-            }
-            else if (textBox_hex.TextLength > 0)
-            {
-                inputstr = main_computeReg.inputstrprocess(textBox_hex.Text);
-                if (main_computeReg.getDec() != Int32.Parse(inputstr))
-                    rv = main_computeReg.set_new_inputstr(textBox_hex.Text, 0);
-            }
-
-            //if (flag == 0)
-            //    value_dec = Convert.ToInt32(inputstr, 16);
-            //else
-            //{
-            //    value_dec = Int32.Parse(inputstr);
-            //    inputstr = Convert.ToString(value_dec, 16);
-            //}
-            //bool rv = false;
-            //if (textBox_dec.TextLength > 0)
-            //{
-            //    rv = main_computeReg.set_new_inputstr(textBox_dec.Text, 1);
-            //}
-            //else if (textBox_hex.TextLength > 0)
-            //{
-            //    rv = main_computeReg.set_new_inputstr(textBox_hex.Text, 0);
-            //}
-            if (rv)
+            if (Check_translate_is_fine())
             {
                 textBox_hex.Text = "0x" + main_computeReg.getHex();
                 textBox_dec.Text = main_computeReg.getDec().ToString();
                 generateGriditem(2, main_computeReg.getBinary());
             }
             //GC.Collect();
+        }
+
+        private bool Check_translate_is_fine()
+        {
+            bool rv;
+            String inputstr;
+            int[] reveal_val = new int[3];
+            try
+            {
+                inputstr = main_computeReg.inputstrprocess(textBox_dec.Text);
+                reveal_val[1] = Int32.Parse(inputstr);
+            }
+            catch (Exception e)
+            {
+            }
+            try
+            {
+                inputstr = main_computeReg.inputstrprocess(textBox_hex.Text);
+                reveal_val[0] = Convert.ToInt32(inputstr, 16);
+            }
+            catch (Exception e)
+            {
+            }
+            reveal_val[2] = main_textbox_Panel.get_textbox_panel_num();
+
+            rv = main_computeReg.set_new_inputstr(reveal_val[get_which_diff(reveal_val)]);
+
+            return rv;
+        }
+
+        private int get_which_diff(int[] reveal_val)
+        {
+            int return_index=0;
+            if (reveal_val[0] == reveal_val[1])
+            {
+                return_index = 2;
+            }
+            else if (reveal_val[0] == reveal_val[2])
+            {
+                return_index = 1;
+            }
+            else
+            {
+                return_index = 0;
+            }
+
+            return return_index;
         }
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
@@ -154,7 +170,7 @@ namespace RegTool_forms
             if (binary_shift_left!= null)
             {
                 binary_shift_left *= 2;
-                main_computeReg.set_new_inputstr(Convert.ToString(binary_shift_left, 16),0);
+                main_computeReg.set_new_inputstr(binary_shift_left);
                 generateGriditem(2, main_computeReg.getBinary());
                 textBox_hex.Text = "0x" + main_computeReg.getHex();
                 textBox_dec.Text = main_computeReg.getDec().ToString();
@@ -167,7 +183,7 @@ namespace RegTool_forms
             if (binary_shift_right != null)
             {
                 binary_shift_right /= 2;
-                main_computeReg.set_new_inputstr(Convert.ToString(binary_shift_right, 16),0);
+                main_computeReg.set_new_inputstr(binary_shift_right);
                 generateGriditem(2, main_computeReg.getBinary());
                 textBox_hex.Text = "0x" + main_computeReg.getHex();
                 textBox_dec.Text = main_computeReg.getDec().ToString();
@@ -211,6 +227,12 @@ namespace RegTool_forms
             {
                 translate_func();
             }
+        }
+
+        private void button_clear_Click(object sender, EventArgs e)
+        {
+            main_textbox_Panel.clear_textbox_text();
+            panel_main.Refresh();
         }
     }
 

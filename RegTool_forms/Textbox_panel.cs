@@ -12,12 +12,14 @@ namespace RegTool_forms
     class Textbox_panel
     {
         public TextBox[] textbox_panel;
-        public Textbox_panel(int numofShowvalue,int row)
+        private int numofShowvalue=0;
+        public Textbox_panel(int numofShowvalue_in,int row)
         {
+            numofShowvalue = numofShowvalue_in;
             textbox_panel = new TextBox[numofShowvalue];
-            Init_textbox_panel(numofShowvalue, row);
+            Init_textbox_panel(row);
         }
-        public void Init_textbox_panel(int numofShowvalue, int row)
+        public void Init_textbox_panel(int row)
         {
             int numofshowrow = numofShowvalue / row, numofshowcol = numofShowvalue / numofshowrow;
             int textbox_count = 0;
@@ -30,7 +32,6 @@ namespace RegTool_forms
                     textbox_panel[textbox_count].Location = new Point(30 + i * 25, 40 + c * 80);
                     textbox_panel[textbox_count].Width = 15;
                     textbox_panel[textbox_count].Height = 10;
-                    textbox_panel[textbox_count].MouseClick += textbox_panel_MouseClick;
                     textbox_count++;
                 }
             }
@@ -49,9 +50,32 @@ namespace RegTool_forms
                 textbox_panel[index].BackColor = Color.FromArgb(255, 255, 255, 255);
             }
         }
-        private void textbox_panel_MouseClick(object sender, MouseEventArgs e)
+        public void clear_textbox_text()
         {
-           
+            for(int index=0;index< numofShowvalue; index++)
+            {
+                textbox_panel[index].Text = "0";
+                textbox_panel[index].Font = new Font(textbox_panel[index].Font, FontStyle.Regular);
+                textbox_panel[index].BackColor = Color.FromArgb(255, 255, 255, 255);
+            }
+                
+        }
+        public int get_textbox_panel_num()
+        {
+            int return_val=0;
+            string binary_str = "";
+            for(int loc=0;loc< numofShowvalue;loc++)
+            {
+                binary_str += textbox_panel[loc].Text;
+            }
+            try {
+                return_val = Convert.ToInt32(binary_str, 2);
+            }
+            catch (Exception xx)
+            {
+                return_val = 0;
+            }            
+            return return_val;
         }
     }
 }
