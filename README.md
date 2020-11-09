@@ -9,7 +9,7 @@ help programer to check each bit of register in binary when set value by hex/dec
 # Application UI preview
 ![Alt text](https://raw.githubusercontent.com/lzhengwei/RegTool/master/RegTool_forms/publish/RegTool_UI.png)
 
-# Release RegTool V1.0
-**RegTool V1.0 function list:**
-- HEX/DEC/BINARY translate between each other
-- Left/Right shift for binary
+# Release
+> **[RegTool V1.0](https://github.com/lzhengwei/RegTool/releases/tag/V1.0)**
+> - HEX/DEC/BINARY translate between each other
+> - Left/Right shift for binary
