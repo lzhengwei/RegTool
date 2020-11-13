@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -8,7 +9,7 @@ namespace RegTool_forms
     {
         int value_dec, value_hex;
         string binary_str,hex_str;
-        
+        List<string> record_list = new List<string>();
         public bool set_new_inputstr(int inputdec)
         {
             //flag - 0 : hex mode
@@ -17,8 +18,6 @@ namespace RegTool_forms
             {
                 value_dec = inputdec;
                 hex_str = Convert.ToString(value_dec, 16);
-
-
                 binary_str = String.Join(String.Empty,
                 hex_str.Select(
                 c => Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0')
@@ -29,6 +28,7 @@ namespace RegTool_forms
                 MessageBox.Show("Input invalid");
                 return false;
             }
+            record_list.Add("0x"+hex_str);
             return true;
         }
         public int getDec()
@@ -60,11 +60,15 @@ namespace RegTool_forms
             str = str.PadLeft(4, '0');
             return str;
         }
+        public List<string> get_record_list()
+        {
+            return record_list;
+        }
         private bool check_is_hex(char str)
         {
             return System.Text.RegularExpressions.Regex.IsMatch(str.ToString(), @"\A\b[0-9a-fA-F]+\b\Z");
         }
-
+        
     }
     
 }

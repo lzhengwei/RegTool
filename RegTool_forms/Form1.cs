@@ -21,6 +21,7 @@ namespace RegTool_forms
         public Form1()
         {
             InitializeComponent();
+            groupBox1.Paint += PaintBorderlessGroupBox;
             panel_main.Paint += new PaintEventHandler(panel1_Paint);
             main_textbox_Panel = new Textbox_panel(numofShowvalue, 2);
             //textbox_panel = new TextBox[numofShowvalue];
@@ -60,6 +61,7 @@ namespace RegTool_forms
         private void button_translate_Click(object sender, EventArgs e)
         {
             translate_func();
+
         }
 
         private void translate_func()
@@ -69,6 +71,8 @@ namespace RegTool_forms
                 textBox_hex.Text = "0x" + main_computeReg.getHex();
                 textBox_dec.Text = main_computeReg.getDec().ToString();
                 generateGriditem(2, main_computeReg.getBinary());
+                listBox_record.DataSource = null;
+                listBox_record.DataSource = main_computeReg.get_record_list();
             }
             //GC.Collect();
         }
@@ -233,6 +237,20 @@ namespace RegTool_forms
         {
             main_textbox_Panel.clear_textbox_text();
             panel_main.Refresh();
+        }
+
+        private void button_sidemenu_Click(object sender, EventArgs e)
+        {
+            //Form1.ActiveForm.Size.Width += 50;
+            //after button press, panel_main loacation = 10,27
+            groupBox1.Location = new Point(10, groupBox1.Location.Y);
+            //this.Size = new System.Drawing.Size(this.Size.Width+50, this.Size.Height);
+        }
+        private void PaintBorderlessGroupBox(object sender, PaintEventArgs p)
+        {
+            GroupBox box = (GroupBox)sender;
+            p.Graphics.Clear(Color.White);
+            p.Graphics.DrawString(box.Text, box.Font, Brushes.Black, 0, 0);
         }
     }
 
