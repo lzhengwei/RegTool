@@ -44,7 +44,7 @@
             this.panel_main = new System.Windows.Forms.Panel();
             this.button_clear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listBox_record = new System.Windows.Forms.ListBox();
+            this.listBox_record = new System.Windows.Forms.ListView();
             this.menuStrip_main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_main.SuspendLayout();
@@ -57,7 +57,7 @@
             this.testToolStripMenuItem});
             this.menuStrip_main.Location = new System.Drawing.Point(0, 0);
             this.menuStrip_main.Name = "menuStrip_main";
-            this.menuStrip_main.Size = new System.Drawing.Size(1080, 24);
+            this.menuStrip_main.Size = new System.Drawing.Size(1092, 24);
             this.menuStrip_main.TabIndex = 1;
             this.menuStrip_main.Text = "menuStrip1";
             // 
@@ -78,13 +78,17 @@
             // 
             // button_sidemenu
             // 
-            this.button_sidemenu.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button_sidemenu.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.button_sidemenu.FlatAppearance.BorderSize = 3;
+            this.button_sidemenu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.button_sidemenu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.button_sidemenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_sidemenu.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_sidemenu.Location = new System.Drawing.Point(873, 12);
+            this.button_sidemenu.Location = new System.Drawing.Point(875, 12);
             this.button_sidemenu.Name = "button_sidemenu";
             this.button_sidemenu.Size = new System.Drawing.Size(21, 344);
             this.button_sidemenu.TabIndex = 15;
-            this.button_sidemenu.Text = "<\r\n<\r\n<\r\n";
+            this.button_sidemenu.Text = "◀";
             this.button_sidemenu.UseVisualStyleBackColor = true;
             this.button_sidemenu.Click += new System.EventHandler(this.button_sidemenu_Click);
             // 
@@ -234,21 +238,25 @@
             // 
             // listBox_record
             // 
-            this.listBox_record.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.listBox_record.FormattingEnabled = true;
-            this.listBox_record.ItemHeight = 20;
-            this.listBox_record.Location = new System.Drawing.Point(975, 39);
-            this.listBox_record.MultiColumn = true;
+            this.listBox_record.BackColor = System.Drawing.Color.White;
+            this.listBox_record.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox_record.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.listBox_record.HideSelection = false;
+            this.listBox_record.Location = new System.Drawing.Point(970, 39);
             this.listBox_record.Name = "listBox_record";
+            this.listBox_record.Scrollable = false;
             this.listBox_record.Size = new System.Drawing.Size(100, 344);
             this.listBox_record.TabIndex = 17;
+            this.listBox_record.UseCompatibleStateImageBehavior = false;
+            this.listBox_record.View = System.Windows.Forms.View.Details;
+            this.listBox_record.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listBox_record_ColumnWidthChanging);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1080, 395);
+            this.ClientSize = new System.Drawing.Size(1092, 395);
             this.Controls.Add(this.listBox_record);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip_main);
@@ -284,7 +292,7 @@
         private System.Windows.Forms.Panel panel_main;
         private System.Windows.Forms.Button button_clear;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox listBox_record;
+        private System.Windows.Forms.ListView listBox_record;
     }
 }
 

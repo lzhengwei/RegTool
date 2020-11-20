@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="RegTool_forms.exe" size="174016">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="RegTool_forms.exe" size="174528">
       <assemblyIdentity name="RegTool_forms" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FrJg3E7k/8SGv4ijUOPxo446ydEYFruREvmarnpoCyU=</dsig:DigestValue>
+        <dsig:DigestValue>yNd4DnANtDZ7iUqmIV2UIMve0DGH3EF3PYRLDF65sl0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

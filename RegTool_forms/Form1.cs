@@ -27,7 +27,12 @@ namespace RegTool_forms
             //textbox_panel = new TextBox[numofShowvalue];
             //Init_textbox_panel(2);
             panel_main.Controls.AddRange(main_textbox_Panel.textbox_panel);
-
+            //listBox_record.View = View.Details;
+            listBox_record.Columns.Add("Hex");
+            listBox_record.Columns.Add("Dec");
+            listBox_record.Columns[0].Width = 95;
+            listBox_record.Columns[1].Width = 95;
+            
         }
 
         private void Init_textbox_panel(int row)
@@ -71,8 +76,7 @@ namespace RegTool_forms
                 textBox_hex.Text = "0x" + main_computeReg.getHex();
                 textBox_dec.Text = main_computeReg.getDec().ToString();
                 generateGriditem(2, main_computeReg.getBinary());
-                listBox_record.DataSource = null;
-                listBox_record.DataSource = main_computeReg.get_record_list();
+                listBox_record.Items.Add(new ListViewItem(new string[] { "0x" + main_computeReg.getHex(), main_computeReg.getDec().ToString() }));             
             }
             //GC.Collect();
         }
@@ -246,18 +250,20 @@ namespace RegTool_forms
             
             if(groupBox1.Location.X == 75)
             {
-                groupBox1.Location = new Point(10, groupBox1.Location.Y);
-                listBox_record.Location = new Point(910, listBox_record.Location.Y);
-                listBox_record.Size = new Size(150, 344);
-                button_sidemenu.Text = ">\n>\n>";
+                groupBox1.Location = new Point(-5, groupBox1.Location.Y);
+                listBox_record.Location = new Point(890, listBox_record.Location.Y);
+                listBox_record.Size = new Size(200, 344);
+                //button_sidemenu.Text = ">\n>\n>";
+                button_sidemenu.Text = "▶";
             }
-                         
+
             else
             {
                 groupBox1.Location = new Point(75, groupBox1.Location.Y);
-                listBox_record.Location = new Point(975, listBox_record.Location.Y);
+                listBox_record.Location = new Point(970, listBox_record.Location.Y);
                 listBox_record.Size = new Size(88, 344);
                 button_sidemenu.Text = "<\n<\n<";
+                button_sidemenu.Text = "◀";
             }
                 
             //this.Size = new System.Drawing.Size(this.Size.Width+50, this.Size.Height);
@@ -267,6 +273,12 @@ namespace RegTool_forms
             GroupBox box = (GroupBox)sender;
             p.Graphics.Clear(Color.White);
             p.Graphics.DrawString(box.Text, box.Font, Brushes.Black, 0, 0);
+        }
+
+        private void listBox_record_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listBox_record.Columns[e.ColumnIndex].Width;
         }
     }
 
