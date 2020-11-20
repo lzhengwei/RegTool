@@ -57,7 +57,7 @@
             this.testToolStripMenuItem});
             this.menuStrip_main.Location = new System.Drawing.Point(0, 0);
             this.menuStrip_main.Name = "menuStrip_main";
-            this.menuStrip_main.Size = new System.Drawing.Size(1063, 24);
+            this.menuStrip_main.Size = new System.Drawing.Size(1080, 24);
             this.menuStrip_main.TabIndex = 1;
             this.menuStrip_main.Text = "menuStrip1";
             // 
@@ -79,11 +79,12 @@
             // button_sidemenu
             // 
             this.button_sidemenu.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button_sidemenu.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_sidemenu.Location = new System.Drawing.Point(873, 12);
             this.button_sidemenu.Name = "button_sidemenu";
             this.button_sidemenu.Size = new System.Drawing.Size(21, 344);
             this.button_sidemenu.TabIndex = 15;
-            this.button_sidemenu.Text = ">\r\n>\r\n>\r\n";
+            this.button_sidemenu.Text = "<\r\n<\r\n<\r\n";
             this.button_sidemenu.UseVisualStyleBackColor = true;
             this.button_sidemenu.Click += new System.EventHandler(this.button_sidemenu_Click);
             // 
@@ -239,7 +240,7 @@
             this.listBox_record.Location = new System.Drawing.Point(975, 39);
             this.listBox_record.MultiColumn = true;
             this.listBox_record.Name = "listBox_record";
-            this.listBox_record.Size = new System.Drawing.Size(88, 344);
+            this.listBox_record.Size = new System.Drawing.Size(100, 344);
             this.listBox_record.TabIndex = 17;
             // 
             // Form1
@@ -247,7 +248,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1063, 395);
+            this.ClientSize = new System.Drawing.Size(1080, 395);
             this.Controls.Add(this.listBox_record);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip_main);

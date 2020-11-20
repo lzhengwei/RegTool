@@ -243,7 +243,23 @@ namespace RegTool_forms
         {
             //Form1.ActiveForm.Size.Width += 50;
             //after button press, panel_main loacation = 10,27
-            groupBox1.Location = new Point(10, groupBox1.Location.Y);
+            
+            if(groupBox1.Location.X == 75)
+            {
+                groupBox1.Location = new Point(10, groupBox1.Location.Y);
+                listBox_record.Location = new Point(910, listBox_record.Location.Y);
+                listBox_record.Size = new Size(150, 344);
+                button_sidemenu.Text = ">\n>\n>";
+            }
+                         
+            else
+            {
+                groupBox1.Location = new Point(75, groupBox1.Location.Y);
+                listBox_record.Location = new Point(975, listBox_record.Location.Y);
+                listBox_record.Size = new Size(88, 344);
+                button_sidemenu.Text = "<\n<\n<";
+            }
+                
             //this.Size = new System.Drawing.Size(this.Size.Width+50, this.Size.Height);
         }
         private void PaintBorderlessGroupBox(object sender, PaintEventArgs p)
