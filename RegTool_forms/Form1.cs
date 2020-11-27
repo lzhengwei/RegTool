@@ -32,7 +32,13 @@ namespace RegTool_forms
             listBox_record.Columns.Add("Dec");
             listBox_record.Columns[0].Width = 95;
             listBox_record.Columns[1].Width = 95;
-            
+
+            listview_rightclick_menu.Items.Add("Open");
+            listview_rightclick_menu.Items.Add("Save");
+            listview_rightclick_menu.Items.Add("Remove");
+            listview_rightclick_menu.Items.Add("Clear All");
+
+
         }
 
         private void Init_textbox_panel(int row)
@@ -73,12 +79,20 @@ namespace RegTool_forms
         {
             if (Check_translate_is_fine())
             {
-                textBox_hex.Text = "0x" + main_computeReg.getHex();
-                textBox_dec.Text = main_computeReg.getDec().ToString();
-                generateGriditem(2, main_computeReg.getBinary());
-                listBox_record.Items.Add(new ListViewItem(new string[] { "0x" + main_computeReg.getHex(), main_computeReg.getDec().ToString() }));             
+                print_new_number();
+                if (listBox_record.Items.Count == 15)
+                    listBox_record.Items.Clear();
+               
+                listBox_record.Items.Add(new ListViewItem(new string[] { "0x" + main_computeReg.getHex(), main_computeReg.getDec().ToString() }));
             }
             //GC.Collect();
+        }
+
+        private void print_new_number()
+        {
+            textBox_hex.Text = "0x" + main_computeReg.getHex();
+            textBox_dec.Text = main_computeReg.getDec().ToString();
+            Fill_in_binary(2, main_computeReg.getBinary());
         }
 
         private bool Check_translate_is_fine()
@@ -138,13 +152,11 @@ namespace RegTool_forms
 
         }
 
-        private void generateGriditem(int row,string ouputBinary)
+        private void Fill_in_binary(int row,string ouputBinary)
         {
             ouputBinary = AddzeroLeft(ouputBinary);
 
             int numofshowrow = numofShowvalue / row, numofshowcol = numofShowvalue / numofshowrow;
-            //panel_main.BackgroundImage = null;
-            //panel_main.Controls.Clear();
             int strcount = 0;
             for (int c = 0; c < numofshowcol; c++)
             {
@@ -154,10 +166,6 @@ namespace RegTool_forms
                     strcount++;
                 }
             }
-
-            //panel_main.BackgroundImage = Resources.regtool_background;
-            //panel_main.BackgroundImageLayout = ImageLayout.Stretch;
-            //panel_main.Show();
             panel_main.Refresh();
         }
 
@@ -179,9 +187,7 @@ namespace RegTool_forms
             {
                 binary_shift_left *= 2;
                 main_computeReg.set_new_inputstr(binary_shift_left);
-                generateGriditem(2, main_computeReg.getBinary());
-                textBox_hex.Text = "0x" + main_computeReg.getHex();
-                textBox_dec.Text = main_computeReg.getDec().ToString();
+                print_new_number();
             }
         }
 
@@ -192,9 +198,7 @@ namespace RegTool_forms
             {
                 binary_shift_right /= 2;
                 main_computeReg.set_new_inputstr(binary_shift_right);
-                generateGriditem(2, main_computeReg.getBinary());
-                textBox_hex.Text = "0x" + main_computeReg.getHex();
-                textBox_dec.Text = main_computeReg.getDec().ToString();
+                print_new_number();
 
             }
         }
@@ -279,6 +283,30 @@ namespace RegTool_forms
         {
             e.Cancel = true;
             e.NewWidth = listBox_record.Columns[e.ColumnIndex].Width;
+        }
+
+        private void listBox_record_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var senderList = (ListView)sender;
+            var clickedItem = senderList.HitTest(e.Location).Item;
+            if (clickedItem != null)
+            {
+                main_computeReg.set_new_inputstr(Convert.ToInt32(clickedItem.Text, 16));
+                print_new_number();
+                //do something
+            }
+        }
+
+        private void listBox_record_MouseDown(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    {
+                        listview_rightclick_menu.Show(this, new Point(e.X + ((Control)sender).Left, e.Y + ((Control)sender).Top));//places the menu at the pointer position
+                    }
+                    break;
+            }
         }
     }
 

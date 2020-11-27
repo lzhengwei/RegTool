@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip_main = new System.Windows.Forms.MenuStrip();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,6 +46,7 @@
             this.button_clear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listBox_record = new System.Windows.Forms.ListView();
+            this.listview_rightclick_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStrip_main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_main.SuspendLayout();
@@ -250,6 +252,13 @@
             this.listBox_record.UseCompatibleStateImageBehavior = false;
             this.listBox_record.View = System.Windows.Forms.View.Details;
             this.listBox_record.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listBox_record_ColumnWidthChanging);
+            this.listBox_record.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox_record_MouseDoubleClick);
+            this.listBox_record.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBox_record_MouseDown);
+            // 
+            // listview_rightclick_menu
+            // 
+            this.listview_rightclick_menu.Name = "listview_rightclick_menu";
+            this.listview_rightclick_menu.Size = new System.Drawing.Size(181, 26);
             // 
             // Form1
             // 
@@ -293,6 +302,7 @@
         private System.Windows.Forms.Button button_clear;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListView listBox_record;
+        private System.Windows.Forms.ContextMenuStrip listview_rightclick_menu;
     }
 }
 
