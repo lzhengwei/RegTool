@@ -60,16 +60,16 @@ namespace RegTool_forms
             }
                 
         }
-        public int get_textbox_panel_num()
+        public ulong get_textbox_panel_num()
         {
-            int return_val=0;
+            ulong return_val =0;
             string binary_str = "";
             for(int loc=0;loc< numofShowvalue;loc++)
             {
                 binary_str += textbox_panel[loc].Text;
             }
             try {
-                return_val = Convert.ToInt32(binary_str, 2);
+                return_val = Convert.ToUInt64(binary_str, 2);
             }
             catch (Exception xx)
             {

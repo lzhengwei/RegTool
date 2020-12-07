@@ -7,17 +7,17 @@ namespace RegTool_forms
 {
     public class ComputeReg
     {
-        int value_dec, value_hex;
+        ulong value_dec;
         string binary_str,hex_str;
         
-        public bool set_new_inputstr(int inputdec)
+        public bool set_new_inputstr(ulong inputdec)
         {
             //flag - 0 : hex mode
             //flag - 1 : dec mode
             try
             {
                 value_dec = inputdec;
-                hex_str = Convert.ToString(value_dec, 16);
+                hex_str = value_dec.ToString("X");
                 binary_str = String.Join(String.Empty,
                 hex_str.Select(
                 c => Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0')
@@ -30,13 +30,13 @@ namespace RegTool_forms
             }            
             return true;
         }
-        public int getDec()
+        public ulong getDec()
         {
             return value_dec;
         }
         public string getHex()
         {
-            return Convert.ToString(value_dec,16);
+            return hex_str;
         }
         public string getBinary()
         {

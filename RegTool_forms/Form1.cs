@@ -99,11 +99,11 @@ namespace RegTool_forms
         {
             bool rv;
             String inputstr;
-            int[] reveal_val = new int[3];
+            ulong[] reveal_val = new ulong[3];
             try
             {
                 inputstr = main_computeReg.inputstrprocess(textBox_dec.Text);
-                reveal_val[1] = Int32.Parse(inputstr);
+                reveal_val[1] = UInt64.Parse(inputstr);
             }
             catch (Exception e)
             {
@@ -111,7 +111,7 @@ namespace RegTool_forms
             try
             {
                 inputstr = main_computeReg.inputstrprocess(textBox_hex.Text);
-                reveal_val[0] = Convert.ToInt32(inputstr, 16);
+                reveal_val[0] = Convert.ToUInt64(inputstr, 16);
             }
             catch (Exception e)
             {
@@ -123,7 +123,7 @@ namespace RegTool_forms
             return rv;
         }
 
-        private int get_which_diff(int[] reveal_val)
+        private int get_which_diff(ulong[] reveal_val)
         {
             int return_index=0;
             if (reveal_val[0] == reveal_val[1])
@@ -182,7 +182,7 @@ namespace RegTool_forms
 
         private void button_shift_left_Click(object sender, EventArgs e)
         {          
-            int binary_shift_left = main_computeReg.getDec();
+            ulong binary_shift_left = main_computeReg.getDec();
             if (binary_shift_left!= null)
             {
                 binary_shift_left *= 2;
@@ -193,7 +193,7 @@ namespace RegTool_forms
 
         private void button_shift_right_Click(object sender, EventArgs e)
         {
-            int binary_shift_right = main_computeReg.getDec();
+            ulong binary_shift_right = main_computeReg.getDec();
             if (binary_shift_right != null)
             {
                 binary_shift_right /= 2;
@@ -291,7 +291,7 @@ namespace RegTool_forms
             var clickedItem = senderList.HitTest(e.Location).Item;
             if (clickedItem != null)
             {
-                main_computeReg.set_new_inputstr(Convert.ToInt32(clickedItem.Text, 16));
+                main_computeReg.set_new_inputstr(Convert.ToUInt64(clickedItem.Text, 16));
                 print_new_number();
                 //do something
             }
