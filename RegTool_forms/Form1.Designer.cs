@@ -111,7 +111,7 @@
             this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label1.Location = new System.Drawing.Point(60, 264);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(328, 71);
+            this.label1.Size = new System.Drawing.Size(459, 71);
             this.label1.TabIndex = 11;
             this.label1.Text = "Hex";
             // 
@@ -123,13 +123,12 @@
             this.button_translate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.button_translate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_translate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_translate.Location = new System.Drawing.Point(411, 261);
+            this.button_translate.Location = new System.Drawing.Point(525, 261);
             this.button_translate.Name = "button_translate";
             this.button_translate.Size = new System.Drawing.Size(184, 74);
             this.button_translate.TabIndex = 0;
             this.button_translate.Text = "Translate";
             this.button_translate.UseVisualStyleBackColor = false;
-            this.button_translate.Click += new System.EventHandler(this.button_translate_Click);
             // 
             // button_shift_left
             // 
@@ -139,7 +138,7 @@
             this.button_shift_left.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.button_shift_left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_shift_left.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_shift_left.Location = new System.Drawing.Point(629, 257);
+            this.button_shift_left.Location = new System.Drawing.Point(743, 257);
             this.button_shift_left.Name = "button_shift_left";
             this.button_shift_left.Size = new System.Drawing.Size(71, 37);
             this.button_shift_left.TabIndex = 6;
@@ -155,7 +154,7 @@
             this.button_shift_right.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.button_shift_right.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_shift_right.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_shift_right.Location = new System.Drawing.Point(629, 298);
+            this.button_shift_right.Location = new System.Drawing.Point(743, 298);
             this.button_shift_right.Name = "button_shift_right";
             this.button_shift_right.Size = new System.Drawing.Size(71, 37);
             this.button_shift_right.TabIndex = 7;
@@ -167,16 +166,17 @@
             // 
             this.textBox_hex.Font = new System.Drawing.Font("Liberation Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_hex.Location = new System.Drawing.Point(69, 289);
+            this.textBox_hex.Multiline = true;
             this.textBox_hex.Name = "textBox_hex";
-            this.textBox_hex.Size = new System.Drawing.Size(140, 26);
+            this.textBox_hex.Size = new System.Drawing.Size(212, 34);
             this.textBox_hex.TabIndex = 10;
-            this.textBox_hex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_hex_KeyDown);
+            this.textBox_hex.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox_hex_MouseClick);
             // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.label2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(225, 265);
+            this.label2.Location = new System.Drawing.Point(293, 266);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 28);
             this.label2.TabIndex = 12;
@@ -185,11 +185,12 @@
             // textBox_dec
             // 
             this.textBox_dec.Font = new System.Drawing.Font("Liberation Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_dec.Location = new System.Drawing.Point(239, 289);
+            this.textBox_dec.Location = new System.Drawing.Point(304, 289);
+            this.textBox_dec.Multiline = true;
             this.textBox_dec.Name = "textBox_dec";
-            this.textBox_dec.Size = new System.Drawing.Size(140, 26);
+            this.textBox_dec.Size = new System.Drawing.Size(212, 34);
             this.textBox_dec.TabIndex = 9;
-            this.textBox_dec.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_dec_KeyDown);
+            this.textBox_dec.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox_dec_MouseClick);
             // 
             // panel_main
             // 
@@ -258,7 +259,7 @@
             // listview_rightclick_menu
             // 
             this.listview_rightclick_menu.Name = "listview_rightclick_menu";
-            this.listview_rightclick_menu.Size = new System.Drawing.Size(181, 26);
+            this.listview_rightclick_menu.Size = new System.Drawing.Size(61, 4);
             // 
             // Form1
             // 
@@ -274,6 +275,8 @@
             this.MainMenuStrip = this.menuStrip_main;
             this.Name = "Form1";
             this.Text = "RegTool";
+            this.Activated += new System.EventHandler(this.Form1_Activated);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.menuStrip_main.ResumeLayout(false);
             this.menuStrip_main.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

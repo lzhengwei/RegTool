@@ -8,14 +8,15 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace RegTool_forms
 {
     public partial class Form1 : Form
     {
         int numofShowvalue = 64;
-        TextBox[] textbox_panel;
         ComputeReg main_computeReg = new ComputeReg();
         Textbox_panel main_textbox_Panel;
         public Form1()
@@ -24,10 +25,9 @@ namespace RegTool_forms
             groupBox1.Paint += PaintBorderlessGroupBox;
             panel_main.Paint += new PaintEventHandler(panel1_Paint);
             main_textbox_Panel = new Textbox_panel(numofShowvalue, 2);
-            //textbox_panel = new TextBox[numofShowvalue];
-            //Init_textbox_panel(2);
+
             panel_main.Controls.AddRange(main_textbox_Panel.textbox_panel);
-            //listBox_record.View = View.Details;
+
             listBox_record.Columns.Add("Hex");
             listBox_record.Columns.Add("Dec");
             listBox_record.Columns[0].Width = 95;
@@ -40,39 +40,37 @@ namespace RegTool_forms
 
 
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
-        private void Init_textbox_panel(int row)
-        {          
-            int numofshowrow = numofShowvalue / row, numofshowcol = numofShowvalue / numofshowrow;
-            panel_main.BackgroundImage = null;
-            panel_main.Controls.Clear();
-            int textbox_count = 0;
-            for (int c = 0; c < numofshowcol; c++)
-            {
-                for (int i = 0; i < numofshowrow; i++)
-                {
-                    textbox_panel[textbox_count] = new TextBox();
-                    textbox_panel[textbox_count].Name = "Label" + i.ToString();
-                    textbox_panel[textbox_count].Location = new Point(30 + i * 25, 40 + c * 80);
-                    textbox_panel[textbox_count].Width = 15;
-                    textbox_panel[textbox_count].Height = 10;
-                    textbox_panel[textbox_count].MouseClick += textbox_panel_MouseClick;
-                    textbox_count++;
-                }
-            }
-            panel_main.Controls.AddRange(textbox_panel);
-            
         }
-
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            HotKey.RegisterHotKey(Handle, 100, HotKey.KeyModifiers.None, Keys.Enter);       //Register Hotkey: Enter
+        }
+        private void FrmSale_Leave(object sender, EventArgs e)
+        {
+            HotKey.UnregisterHotKey(Handle, 100);       //Register Hotkey: Enter
+        }
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_HOTKEY = 0x0312;
+            switch (m.Msg)
+            {
+                case WM_HOTKEY:
+                    switch (m.WParam.ToInt32())
+                    {
+                        case 100:       //Press Enter event
+                            translate_func();
+                            break;
+                    }
+                    break;
+            }
+            base.WndProc(ref m);
+        }      
         private void textbox_panel_MouseClick(object sender, MouseEventArgs e)
         {
             textBox_dec.Text = ""; textBox_hex.Text = "";
-        }
-
-        private void button_translate_Click(object sender, EventArgs e)
-        {
-            translate_func();
-
         }
 
         private void translate_func()
@@ -85,11 +83,12 @@ namespace RegTool_forms
                
                 listBox_record.Items.Add(new ListViewItem(new string[] { "0x" + main_computeReg.getHex(), main_computeReg.getDec().ToString() }));
             }
-            //GC.Collect();
         }
 
         private void print_new_number()
         {
+            textBox_hex.Text = "";
+            textBox_dec.Text = "";
             textBox_hex.Text = "0x" + main_computeReg.getHex();
             textBox_dec.Text = main_computeReg.getDec().ToString();
             Fill_in_binary(2, main_computeReg.getBinary());
@@ -224,26 +223,11 @@ namespace RegTool_forms
             g.Dispose();
             GC.Collect();
         }
-
-        private void textBox_hex_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode.ToString().Equals("Return"))
-            {
-                translate_func();
-            }
-        }
-
-        private void textBox_dec_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode.ToString().Equals("Return"))
-            {
-                translate_func();
-            }
-        }
-
         private void button_clear_Click(object sender, EventArgs e)
         {
             main_textbox_Panel.clear_textbox_text();
+            textBox_dec.Text = "";
+            textBox_hex.Text = "";
             panel_main.Refresh();
         }
 
@@ -306,6 +290,26 @@ namespace RegTool_forms
                         listview_rightclick_menu.Show(this, new Point(e.X + ((Control)sender).Left, e.Y + ((Control)sender).Top));//places the menu at the pointer position
                     }
                     break;
+            }
+        }
+
+        private void textBox_hex_MouseClick(object sender, MouseEventArgs e)
+        {
+            textBox_hex.BackColor = Color.FromArgb(252, 255, 204);
+            textBox_dec.BackColor = Color.White;
+        }
+
+        private void textBox_dec_MouseClick(object sender, MouseEventArgs e)
+        {
+            textBox_dec.BackColor = Color.FromArgb(252, 255, 204);
+            textBox_hex.BackColor = Color.White;
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString().Equals("Return"))
+            {
+                translate_func();
             }
         }
     }
