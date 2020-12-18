@@ -129,6 +129,7 @@
             this.button_translate.TabIndex = 0;
             this.button_translate.Text = "Translate";
             this.button_translate.UseVisualStyleBackColor = false;
+            this.button_translate.Click += new System.EventHandler(this.button_translate_Click);
             // 
             // button_shift_left
             // 
@@ -260,6 +261,7 @@
             // 
             this.listview_rightclick_menu.Name = "listview_rightclick_menu";
             this.listview_rightclick_menu.Size = new System.Drawing.Size(61, 4);
+            this.listview_rightclick_menu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.listview_rightclick_menu_ItemClicked);
             // 
             // Form1
             // 

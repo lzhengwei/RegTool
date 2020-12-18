@@ -16,7 +16,7 @@ namespace RegTool_forms
 {
     public partial class Form1 : Form
     {
-        int numofShowvalue = 64;
+        int numofShowvalue = 64, record_item_click_idx=0;
         ComputeReg main_computeReg = new ComputeReg();
         Textbox_panel main_textbox_Panel;
         public Form1()
@@ -33,7 +33,7 @@ namespace RegTool_forms
             listBox_record.Columns[0].Width = 95;
             listBox_record.Columns[1].Width = 95;
 
-            listview_rightclick_menu.Items.Add("Open");
+            listview_rightclick_menu.Items.Add("Check");
             listview_rightclick_menu.Items.Add("Save");
             listview_rightclick_menu.Items.Add("Remove");
             listview_rightclick_menu.Items.Add("Clear All");
@@ -148,7 +148,7 @@ namespace RegTool_forms
 
         private void layer1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Test");
         }
 
         private void Fill_in_binary(int row,string ouputBinary)
@@ -233,15 +233,12 @@ namespace RegTool_forms
 
         private void button_sidemenu_Click(object sender, EventArgs e)
         {
-            //Form1.ActiveForm.Size.Width += 50;
-            //after button press, panel_main loacation = 10,27
             
             if(groupBox1.Location.X == 75)
             {
                 groupBox1.Location = new Point(-5, groupBox1.Location.Y);
                 listBox_record.Location = new Point(890, listBox_record.Location.Y);
                 listBox_record.Size = new Size(200, 344);
-                //button_sidemenu.Text = ">\n>\n>";
                 button_sidemenu.Text = "▶";
             }
 
@@ -250,7 +247,6 @@ namespace RegTool_forms
                 groupBox1.Location = new Point(75, groupBox1.Location.Y);
                 listBox_record.Location = new Point(970, listBox_record.Location.Y);
                 listBox_record.Size = new Size(88, 344);
-                button_sidemenu.Text = "<\n<\n<";
                 button_sidemenu.Text = "◀";
             }
                 
@@ -287,6 +283,8 @@ namespace RegTool_forms
             {
                 case MouseButtons.Right:
                     {
+                        if(listBox_record.GetItemAt(e.X, e.Y)!=null)
+                            record_item_click_idx = listBox_record.GetItemAt(e.X, e.Y).Index;
                         listview_rightclick_menu.Show(this, new Point(e.X + ((Control)sender).Left, e.Y + ((Control)sender).Top));//places the menu at the pointer position
                     }
                     break;
@@ -312,7 +310,39 @@ namespace RegTool_forms
                 translate_func();
             }
         }
+
+        private void listview_rightclick_menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+            if (e.ClickedItem.Text == "Check")
+            {
+                if(listBox_record.Items.Count> record_item_click_idx)
+                {
+                    main_computeReg.set_new_inputstr(Convert.ToUInt64(listBox_record.Items[record_item_click_idx].Text, 16));
+                    print_new_number();
+                }
+            }
+            else if (e.ClickedItem.Text == "Save")
+            {
+
+            }
+            else if (e.ClickedItem.Text == "Remove")
+            {
+                if (listBox_record.Items.Count > record_item_click_idx)
+                {
+                    listBox_record.Items.Remove(listBox_record.Items[record_item_click_idx]);
+                }
+                    
+            }
+            else if (e.ClickedItem.Text == "Clear All")
+            {
+                listBox_record.Items.Clear();
+            }
+        }
+
+        private void button_translate_Click(object sender, EventArgs e)
+        {
+            translate_func();
+        }
     }
-
-
 }
