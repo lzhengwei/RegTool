@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -40,18 +41,14 @@ namespace RegTool_forms
 
 
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+    
         private void Form1_Activated(object sender, EventArgs e)
         {
+
             HotKey.RegisterHotKey(Handle, 100, HotKey.KeyModifiers.None, Keys.Enter);       //Register Hotkey: Enter
+
         }
-        private void FrmSale_Leave(object sender, EventArgs e)
-        {
-            HotKey.UnregisterHotKey(Handle, 100);       //Register Hotkey: Enter
-        }
+
         protected override void WndProc(ref Message m)
         {
             const int WM_HOTKEY = 0x0312;
@@ -67,7 +64,7 @@ namespace RegTool_forms
                     break;
             }
             base.WndProc(ref m);
-        }      
+        }
         private void textbox_panel_MouseClick(object sender, MouseEventArgs e)
         {
             textBox_dec.Text = ""; textBox_hex.Text = "";
@@ -338,6 +335,11 @@ namespace RegTool_forms
             {
                 listBox_record.Items.Clear();
             }
+        }
+
+        private void Form1_Deactivate(object sender, EventArgs e)
+        {
+            HotKey.UnregisterHotKey(Handle, 100);       //Register Hotkey: Enter
         }
 
         private void button_translate_Click(object sender, EventArgs e)
