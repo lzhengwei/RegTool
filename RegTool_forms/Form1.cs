@@ -17,9 +17,10 @@ namespace RegTool_forms
 {
     public partial class Form1 : Form
     {
-        int numofShowvalue = 64, record_item_click_idx=0;
+        int numofShowvalue = 64;
         ComputeReg main_computeReg = new ComputeReg();
         Textbox_panel main_textbox_Panel;
+        List<ListViewItem> save_listview_items_list;
         public Form1()
         {
             InitializeComponent();
@@ -39,6 +40,7 @@ namespace RegTool_forms
             listview_rightclick_menu.Items.Add("Remove");
             listview_rightclick_menu.Items.Add("Clear All");
 
+            save_listview_items_list = new List<ListViewItem>(16);
 
         }
     
@@ -280,8 +282,8 @@ namespace RegTool_forms
             {
                 case MouseButtons.Right:
                     {
-                        if(listBox_record.GetItemAt(e.X, e.Y)!=null)
-                            record_item_click_idx = listBox_record.GetItemAt(e.X, e.Y).Index;
+                        //if (listBox_record.GetItemAt(e.X, e.Y) != null)
+                        //    listBox_record.GetItemAt(e.X, e.Y).Selected = true;
                         listview_rightclick_menu.Show(this, new Point(e.X + ((Control)sender).Left, e.Y + ((Control)sender).Top));//places the menu at the pointer position
                     }
                     break;
@@ -313,27 +315,37 @@ namespace RegTool_forms
 
             if (e.ClickedItem.Text == "Check")
             {
-                if(listBox_record.Items.Count> record_item_click_idx)
+                if(listBox_record.SelectedItems.Count>0)
                 {
-                    main_computeReg.set_new_inputstr(Convert.ToUInt64(listBox_record.Items[record_item_click_idx].Text, 16));
+                    main_computeReg.set_new_inputstr(Convert.ToUInt64(listBox_record.SelectedItems[0].Text, 16));
                     print_new_number();
                 }
+
+    
             }
             else if (e.ClickedItem.Text == "Save")
             {
-
+                foreach (ListViewItem click_item in listBox_record.SelectedItems)
+                {
+                        save_listview_items_list.Add(click_item);
+                }                                 
             }
             else if (e.ClickedItem.Text == "Remove")
             {
-                if (listBox_record.Items.Count > record_item_click_idx)
+                foreach (ListViewItem click_item in listBox_record.SelectedItems)
                 {
-                    listBox_record.Items.Remove(listBox_record.Items[record_item_click_idx]);
+                    save_listview_items_list.Remove(click_item);
                 }
-                    
+                foreach (ListViewItem click_item in listBox_record.SelectedItems)
+                {
+                    listBox_record.Items.Remove(click_item);
+                }
             }
             else if (e.ClickedItem.Text == "Clear All")
             {
                 listBox_record.Items.Clear();
+                if(save_listview_items_list.Count>0)
+                    listBox_record.Items.AddRange(save_listview_items_list.ToArray());
             }
         }
 
