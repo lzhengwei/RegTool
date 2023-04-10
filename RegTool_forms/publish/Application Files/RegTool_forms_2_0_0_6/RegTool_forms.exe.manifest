@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="RegTool_forms.exe" version="2.0.0.6" publicKeyToken="cbf4bbe88204c68f" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="binary.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="RegTool_forms" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="RegTool_forms.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC 資訊清單選項
+          若希望變更 Windows 使用者帳戶控制層級，
+          請用下列其中一項取代 requestedExecutionLevel 節點。
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         若希望利用檔案及登錄模擬，提供回溯相容性，
+         則請刪除 requestedExecutionLevel 節點。
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="RegTool_forms.exe" size="177088">
+      <assemblyIdentity name="RegTool_forms" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>WuGadsQn58SMSMX271Bf4AqXpzPfvP6rYmjM8fNjjwk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="binary.ico" size="67646">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>ViFarJmTaQFlDCh0suQrXaI34HlMfJ7ccoqCuugQI7s=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="RegTool_forms.exe.config" size="184">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>X+GtgC9o18R9u9jmAWK6iKuu0WLaXTgchdPkk1MRli4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\regtool_background.png" size="17380">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>LicJwWDfQTlFQnq0z474MDC2YwnkRZ6rBuZMUCctkS8=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=SNGROUP01\102819" issuerKeyHash="e4b007aa48fd41413bc44a47b992627fead998d1" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>0jA/pOjfZog1WGVjPX5Yo8xwKYWzLIfhxQWrO5BIy7w=</DigestValue></Reference></SignedInfo><SignatureValue>db9NX26D06FrT3/anH7Il48z/bXfEtp+GYHg/hvA7R8dRpAjVyz25q7G02uAQ+rqlfqkKv2TvXDTEGWwpnzHcXbKQpQ/wvqqwpNhRixiEgz4NNTVKtoQXITAi9wJ6GwUFd6NImmP4cim/hzVYcNieA7OQPM2Q0vT3Se4buW5GNw=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>xO976cDyYAj0Sx/CPfu8HqkKkPE8KKJEl29tDQvu0g6NP5laR2gK1lB3ejD0HZBJULmlHp6V4wTzUPMjViNSdZhPhyY6Q9pNwrbCbuqoN6BSjmqlIQPwVsY0+eq/bbH4J/OeqWHcarQauP5QTJ7VbeeSPOM/vPAtSsQRYiRkFOU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="bccb48903bab05c5e1872cb3852970cca3587e3d636558358866dfe8a43f30d2" Description="" Url=""><as:assemblyIdentity name="RegTool_forms.exe" version="2.0.0.6" publicKeyToken="cbf4bbe88204c68f" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=SNGROUP01\102819</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>iGqjFOvK7BDLzulRb2F3qwhX18WxEelYnZKL4uSPSDA=</DigestValue></Reference></SignedInfo><SignatureValue>I1QeYG7IJp9fjE8UjuEn6heODgRHmQP2oI+tImAldZYk7i5DDPnpk/Kt+XHrM2p/Pa/jA7vuNQ+NtkSlzkD8bKlMqSwT0bENv/G1gwtgMDguH+a2ZnJ74oZrFc3JRmhZWDcK7gIPqTiCDteRbiFHbgxXWvjgzNirN6quX4DEnRE=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>xO976cDyYAj0Sx/CPfu8HqkKkPE8KKJEl29tDQvu0g6NP5laR2gK1lB3ejD0HZBJULmlHp6V4wTzUPMjViNSdZhPhyY6Q9pNwrbCbuqoN6BSjmqlIQPwVsY0+eq/bbH4J/OeqWHcarQauP5QTJ7VbeeSPOM/vPAtSsQRYiRkFOU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB2TCCAUKgAwIBAgIQJYs5bWwnAaZCkXvz+wKlJTANBgkqhkiG9w0BAQsFADArMSkwJwYDVQQDHiAAUwBOAEcAUgBPAFUAUAAwADEAXAAxADAAMgA4ADEAOTAeFw0yMzA0MDcwOTQ3NTJaFw0yNDA0MDYxNTQ3NTJaMCsxKTAnBgNVBAMeIABTAE4ARwBSAE8AVQBQADAAMQBcADEAMAAyADgAMQA5MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDE73vpwPJgCPRLH8I9+7weqQqQ8TwookSXb20NC+7SDo0/mVpHaArWUHd6MPQdkElQuaUenpXjBPNQ8yNWI1J1mE+HJjpD2k3CtsJu6qg3oFKOaqUhA/BWxjT56r9tsfgn856pYdxqtBq4/lBMntVt55I84z+88C1KxBFiJGQU5QIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAG/FaH2pJR0Ck2QrkiZjRDXDQbpBYtN6fhfBk//w/yv0/H64FzxQgZSZHDjfxt3rvebFrXeH2ja5oYLuxM/Vis6VWH84/F2spr21EyfrutDD1MjQFwSRB2J4xV+MWVicL1lOtp3zsh/rX0+YZ/FiWjtNv2OB7N3MhBSFGm3Zc52c</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
