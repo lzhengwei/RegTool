@@ -41,32 +41,8 @@ namespace RegTool_forms
             listview_rightclick_menu.Items.Add("Clear All");
 
             save_listview_items_list = new List<ListViewItem>(16);
-
-        }
-    
-        private void Form1_Activated(object sender, EventArgs e)
-        {
-
-            HotKey.RegisterHotKey(Handle, 100, HotKey.KeyModifiers.None, Keys.Enter);       //Register Hotkey: Enter
-
         }
 
-        protected override void WndProc(ref Message m)
-        {
-            const int WM_HOTKEY = 0x0312;
-            switch (m.Msg)
-            {
-                case WM_HOTKEY:
-                    switch (m.WParam.ToInt32())
-                    {
-                        case 100:       //Press Enter event
-                            translate_func();
-                            break;
-                    }
-                    break;
-            }
-            base.WndProc(ref m);
-        }
         private void textbox_panel_MouseClick(object sender, MouseEventArgs e)
         {
             textBox_dec.Text = ""; textBox_hex.Text = "";
@@ -248,9 +224,8 @@ namespace RegTool_forms
                 listBox_record.Size = new Size(88, 344);
                 button_sidemenu.Text = "◀";
             }
-                
-            //this.Size = new System.Drawing.Size(this.Size.Width+50, this.Size.Height);
         }
+
         private void PaintBorderlessGroupBox(object sender, PaintEventArgs p)
         {
             GroupBox box = (GroupBox)sender;
@@ -282,8 +257,6 @@ namespace RegTool_forms
             {
                 case MouseButtons.Right:
                     {
-                        //if (listBox_record.GetItemAt(e.X, e.Y) != null)
-                        //    listBox_record.GetItemAt(e.X, e.Y).Selected = true;
                         listview_rightclick_menu.Show(this, new Point(e.X + ((Control)sender).Left, e.Y + ((Control)sender).Top));//places the menu at the pointer position
                     }
                     break;
@@ -320,8 +293,6 @@ namespace RegTool_forms
                     main_computeReg.set_new_inputstr(Convert.ToUInt64(listBox_record.SelectedItems[0].Text, 16));
                     print_new_number();
                 }
-
-    
             }
             else if (e.ClickedItem.Text == "Save")
             {
@@ -347,11 +318,6 @@ namespace RegTool_forms
                 if(save_listview_items_list.Count>0)
                     listBox_record.Items.AddRange(save_listview_items_list.ToArray());
             }
-        }
-
-        private void Form1_Deactivate(object sender, EventArgs e)
-        {
-            HotKey.UnregisterHotKey(Handle, 100);       //Register Hotkey: Enter
         }
 
         private void button_translate_Click(object sender, EventArgs e)

@@ -23,7 +23,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ProductName>RegTool</ProductName>
+    <PublisherName>RegTool</PublisherName>
+    <SuiteName>RegTool</SuiteName>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -52,10 +55,10 @@
     <ApplicationIcon>binary.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>485A5941006638E9978F6AC3974DD269CD5D06E3</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>A9C1E2B1974B84872CA868D106C9A8F5BB1ECF30</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>RegTool_forms_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>RegTool_forms_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -112,6 +115,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="RegTool_forms_1_TemporaryKey.pfx" />
     <None Include="RegTool_forms_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

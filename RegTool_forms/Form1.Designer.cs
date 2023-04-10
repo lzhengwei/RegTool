@@ -274,11 +274,10 @@
             this.Controls.Add(this.menuStrip_main);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip_main;
             this.Name = "Form1";
             this.Text = "RegTool";
-            this.Activated += new System.EventHandler(this.Form1_Activated);
-            this.Deactivate += new System.EventHandler(this.Form1_Deactivate);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.menuStrip_main.ResumeLayout(false);
             this.menuStrip_main.PerformLayout();

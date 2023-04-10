@@ -1,0 +1,7 @@
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\obj\Release\RegTool_forms.csprojAssemblyReference.cache
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\obj\Release\RegTool_forms.Form1.resources
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\obj\Release\RegTool_forms.Properties.Resources.resources
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\obj\Release\RegTool_forms.csproj.GenerateResource.cache
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\obj\Release\RegTool_forms.csproj.CoreCompileInputs.cache
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\obj\Release\RegTool_forms.exe
+C:\Users\102819\Documents\Visual Studio 2019\porject\RegTool\RegTool_forms\obj\Release\RegTool_forms.pdb
