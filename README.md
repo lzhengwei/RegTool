@@ -10,9 +10,9 @@ help programer to check each bit of register in binary when set value by hex/dec
 ![Alt text](https://raw.githubusercontent.com/lzhengwei/RegTool/master/RegTool_forms/publish/RegTool_UI.png)
 
 # Release
-> **[Newest V2.2](https://github.com/lzhengwei/RegTool/blob/master/RegTool_forms/publish/RegTool_V2.2.7z)**
+> **[Newest V2.6](https://github.com/lzhengwei/RegTool/releases/download/V2.6/RegTool_V2.6.7z)**
 >
-> - support 64 bit length input
+> - Fix bug of hot key `Enter` may also block on other app
 
 > **[RegTool V2.0](https://github.com/lzhengwei/RegTool/releases/tag/2.0)**
 >
